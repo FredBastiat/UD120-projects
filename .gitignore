@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.pyc
 enron_mail_20110402.tgz
 enron_mail_20110402/
@@ -8,3 +9,14 @@ text_learning/your_email_authors.pkl
 my_classifier.pkl
 my_dataset.pkl
 my_feature_list.pkl
+=======
+.ipynb_checkpoints/
+build/ApplyDiffs*
+build/README
+build/filesizes*
+build/*.list.gz
+build/*.csv
+data/*.csv
+*.html
+*.png
+>>>>>>> 85763f9ff070ce2d27d750a79f6baabbd4497315
