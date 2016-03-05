@@ -50,4 +50,4 @@ for i in clf.feature_importances_:
     print "feature importance is:" 
     print i
     print numpy.where(clf.feature_importances_ == i)
-print vectorizer.get_feature_names()[21323]
+print vectorizer.get_feature_names()[14343]

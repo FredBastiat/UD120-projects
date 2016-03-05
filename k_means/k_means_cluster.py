@@ -51,31 +51,38 @@ feature_2 = "exercised_stock_options"
 poi  = "poi"
 feature_3 = "total_payments"
 features_list = [poi, feature_1, feature_2, feature_3]
-data = featureFormat(data_dict, features_list )
+data = featureFormat(data_dict, features_list)
 poi, finance_features = targetFeatureSplit( data )
-
-print min(feature_2)
-print max(feature_2)
 
 ### in the "clustering with 3 features" part of the mini-project,
 ### you'll want to change this line to 
 ### for f1, f2, _ in finance_features:
 ### (as it's currently written, the line below assumes 2 features)
-for f1, f2, f3 in finance_features:
-    plt.scatter( f1, f2 )
+for f1, f2, _ in finance_features:
+    plt.scatter( f1, f2)
 plt.show()
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
 
-from sklearn import cluster 
-pred = cluster.KMeans(n_clusters=2)
-pred.fit_predict(feature_1, feature_2)
+from sklearn.cluster import KMeans
+pred = KMeans(n_clusters=3, init='random').fit_predict(data)
 
+max_feature2_key = max(data_dict, key=lambda x: data_dict[x][feature_2] if not isinstance(data_dict[x][feature_2], str) else int("-999"))
+min_feature2_key = min(data_dict, key=lambda x: data_dict[x][feature_2])
+
+print data_dict[max_feature2_key][feature_2]
+print data_dict[min_feature2_key][feature_2]
+
+max_feature1_key = max(data_dict, key=lambda x: data_dict[x][feature_1] if not isinstance(data_dict[x][feature_1], str) else int("-999"))
+min_feature1_key = min(data_dict, key=lambda x: data_dict[x][feature_1])
+
+print data_dict[max_feature1_key][feature_1]
+print data_dict[min_feature1_key][feature_1]
 
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file
 try:
-    Draw(pred, finance_features, poi, mark_poi=False, name="clusters.pdf", f1_name=feature_1, f2_name=feature_2)
+    Draw(pred, finance_features, poi, mark_poi=False, name="clusters2.pdf", f1_name=feature_1, f2_name=feature_2)
 except NameError:
     print "no predictions object named pred found, no clusters to plot"

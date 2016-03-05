@@ -37,7 +37,7 @@ features_train, features_test, labels_train, labels_test = cross_validation.trai
 clf = DecisionTreeClassifier()
 clf.fit(features_train, labels_train)
 pred = clf.predict(features_test, labels_test)
-print accuracy_score(pred, labels_test)
+print accuracy_score(labels, pred)
 
 
 
